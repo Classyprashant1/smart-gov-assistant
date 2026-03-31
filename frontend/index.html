@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Gov Assistant</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        
+        <aside class="sidebar slide-in-left">
+            <h2><i class="fa-solid fa-building-columns"></i> Smart Gov</h2>
+            <ul class="feature-list">
+                <li><i class="fa-solid fa-check-double"></i> Eligibility Check</li>
+                <li><i class="fa-solid fa-list-check"></i> Document Checklist</li>
+                <li><i class="fa-solid fa-shoe-prints"></i> Step-by-Step Guide</li>
+                <li><i class="fa-solid fa-bell"></i> Scheme Alerts</li>
+            </ul>
+        </aside>
+
+        <main class="main-content fade-in">
+            
+            <header class="app-header">
+                <div class="header-text">
+                    <h1>Smart Gov Assistant</h1>
+                    <p>Ask me anything about government schemes, Aadhar, PAN, or Licenses.</p>
+                </div>
+            </header>
+
+            <div class="chat-window" id="chat-window">
+                <div class="message ai-message pop-in">
+                    <p>Hello! I am your AI assistant. How can I help you with your government documents today?</p>
+                </div>
+                </div>
+
+            <div class="input-area slide-up">
+                <input type="text" id="user-input" placeholder="e.g., How do I apply for a PAN card?">
+                
+                <button id="export-pdf-btn" title="Save Chat as PDF">
+                    <i class="fa-solid fa-file-pdf"></i>
+                </button>
+                
+                <button id="send-btn" title="Send Message">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+            
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

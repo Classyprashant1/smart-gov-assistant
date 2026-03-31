@@ -1,0 +1,486 @@
+/* frontend/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary: #4f46e5;     /* Vibrant Indigo */
+    --secondary: #0ea5e9;   /* Bright Sky Blue */
+    --accent: #10b981;      /* Emerald Green for success */
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Animated Gradient Background */
+body {
+    background: linear-gradient(-45deg, #e0e7ff, #f3e8ff, #e0f2fe, #dcfce7);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: var(--text-dark);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-container {
+    display: flex;
+    height: 95vh;
+    width: 95vw;
+    max-width: 1400px;
+    border-radius: 24px;
+    overflow: hidden;
+    /* Glassmorphism Effect */
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 300px;
+    background: linear-gradient(135deg, var(--primary), #3b82f6);
+    color: white;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative glowing orb in sidebar */
+.sidebar::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: float 6s ease-in-out infinite;
+}
+
+.sidebar h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 1;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.05rem;
+    font-weight: 400;
+    opacity: 0.8;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.feature-list li:hover {
+    opacity: 1;
+    transform: translateX(10px) scale(1.05);
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.app-header {
+    padding: 2rem 3rem;
+    background: rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid var(--glass-border);
+    backdrop-filter: blur(5px);
+}
+
+.app-header h1 {
+    font-size: 2.2rem;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text; /* Add this line to fix the warning */
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.app-header p {
+    color: var(--text-light);
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+/* Chat Window & Custom Scrollbar */
+.chat-window {
+    flex: 1;
+    padding: 2rem 3rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    scroll-behavior: smooth;
+}
+
+.chat-window::-webkit-scrollbar {
+    width: 8px;
+}
+.chat-window::-webkit-scrollbar-track {
+    background: transparent;
+}
+.chat-window::-webkit-scrollbar-thumb {
+    background: rgba(79, 70, 229, 0.3);
+    border-radius: 10px;
+}
+.chat-window::-webkit-scrollbar-thumb:hover {
+    background: rgba(79, 70, 229, 0.6);
+}
+
+/* Message Bubbles */
+.message {
+    max-width: 75%;
+    padding: 1.2rem 1.8rem;
+    border-radius: 20px;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.ai-message {
+    background: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    border-left: 5px solid var(--primary);
+}
+
+.user-message {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+}
+
+/* AI Output Cards (The Magic Part) */
+.info-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 1rem;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.info-card h3 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-card h3::before {
+    content: '\f19c'; /* Bank/Gov icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--secondary);
+}
+
+.info-section {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--secondary);
+    transition: all 0.3s ease;
+}
+
+.info-section:hover {
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.info-section h4 {
+    color: var(--primary);
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-section ul, .info-section ol {
+    margin-left: 2rem;
+    color: var(--text-dark);
+}
+
+.info-section li {
+    margin-bottom: 0.5rem;
+}
+
+.info-section li::marker {
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+.alert-box {
+    background: linear-gradient(to right, #fef2f2, #fff1f2);
+    border: 1px solid #fecdd3;
+    border-left: 5px solid #ef4444;
+    padding: 1.2rem;
+    border-radius: 12px;
+    color: #991b1b;
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    animation: pulseAlert 2s infinite;
+}
+
+/* Input Area */
+.input-area {
+    padding: 1.5rem 3rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-top: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 1.2rem 2rem;
+    border: 2px solid transparent;
+    background: white;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.input-area input:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2);
+    transform: translateY(-2px);
+}
+
+.input-area button {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-area button:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.6);
+}
+
+.input-area button:active {
+    transform: scale(0.95);
+}
+
+/* --- Advanced Animations --- */
+
+/* 1. Background Gradient Pan */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 2. Floating Effect for Sidebar Orb */
+@keyframes float {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(20px) scale(1.1); }
+    100% { transform: translateY(0px) scale(1); }
+}
+
+/* 3. Bouncy Pop-In for Chat Messages */
+.pop-in { 
+    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; 
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+}
+
+@keyframes popIn {
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+    }
+}
+
+/* 4. Smooth Slide In for Sidebar */
+.slide-in-left { 
+    animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+}
+
+@keyframes slideInLeft {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+/* 5. Fade In for Main Content */
+.fade-in { 
+    animation: fadeIn 1s ease-out forwards; 
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* 6. Input Area Slide Up */
+.slide-up { 
+    animation: slideUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+    opacity: 0;
+}
+
+@keyframes slideUp {
+    0% { transform: translateY(50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* 7. Subtle Pulse for Important Alerts */
+@keyframes pulseAlert {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Loading Spinner Animation Enhancements */
+.fa-spinner {
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+/* Premium Export Button with Animations */
+.export-btn {
+    background: transparent;
+    color: var(--text-dark);
+    border: 2px solid var(--text-dark);
+    padding: 0.8rem 1.5rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden; /* Keeps animations inside the button */
+    transition: color 0.4s ease, box-shadow 0.4s ease;
+    z-index: 1;
+}
+
+/* 1. The Sweep Background */
+.export-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--text-dark);
+    z-index: -1;
+    transform: scaleX(0); /* Hidden by default */
+    transform-origin: left; /* Sweeps from left to right */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 2. The Continuous Shimmer Effect */
+.export-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    animation: buttonShimmer 3s infinite;
+    z-index: 2;
+    pointer-events: none; /* Prevents the shine from blocking clicks */
+}
+
+/* Hover States */
+.export-btn:hover {
+    color: var(--bg-main); /* Text turns white */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.export-btn:hover::before {
+    transform: scaleX(1); /* Background fills in */
+}
+
+/* 3. Icon Animations */
+.export-btn i {
+    color: var(--accent); /* Electric Orange */
+    font-size: 1.2rem;
+    transition: color 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.export-btn:hover i {
+    color: var(--bg-main); /* Icon turns white */
+    transform: scale(1.15) rotate(-10deg); /* Icon pops and tilts */
+}
+
+/* 4. Click Animation */
+.export-btn:active {
+    transform: scale(0.95); /* Button squishes slightly when clicked */
+}
+
+/* Shimmer Keyframes */
+@keyframes buttonShimmer {
+    0% { left: -100%; }
+    20% { left: 200%; } /* Flashes quickly */
+    100% { left: 200%; } /* Waits before flashing again */
+}
